@@ -1,20 +1,20 @@
 function lengthOfLongestSubstring(s: string): number {
-  let maxString = '';
-  let currString = '';
-  for (let i = 0; i < s.length; i++) {
-    currString = s[i];
-    for (let j = i + 1; j < s.length; j++) {
-      if (currString.includes(s[j])) {
-        maxString =
-          currString.length > maxString.length ? currString : maxString;
-        currString = '';
-        break;
-      }
-      currString += s[j];
+  const memo: Record<string, number> = {};
+  let res = 0;
+  let left = 0;
+
+  for (let right = 0; right < s.length; right++) {
+    const key = s[right];
+
+    if (memo[key] !== undefined) {
+      left = Math.max(memo[key], left);
     }
-    maxString = currString.length > maxString.length ? currString : maxString;
+
+    memo[key] = right + 1;
+    res = Math.max(res, right - left + 1);
   }
-  return maxString.length;
+
+  return res;
 }
 
 export default lengthOfLongestSubstring;
