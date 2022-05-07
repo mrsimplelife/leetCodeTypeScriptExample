@@ -1,6 +1,6 @@
 import lengthOfLongestSubstring from './lengthOfLongestSubstring';
 
-test.only(`
+test(`
 Input: s = "abcabcbb"
 Output: 3
 Explanation: The answer is "abc", with the length of 3.
@@ -26,5 +26,29 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 `, () => {
   const result = lengthOfLongestSubstring('pwwkew');
   const expected = 3;
+  expect(result).toEqual(expected);
+});
+test(`
+Input: " "
+Output: 1
+`, () => {
+  const result = lengthOfLongestSubstring(' ');
+  const expected = 1;
+  expect(result).toEqual(expected);
+});
+test(`
+Input: ""
+Output: 0
+`, () => {
+  const result = lengthOfLongestSubstring('');
+  const expected = 0;
+  expect(result).toEqual(expected);
+});
+test(`
+Input:"au"
+Output:2
+`, () => {
+  const result = lengthOfLongestSubstring('au');
+  const expected = 2;
   expect(result).toEqual(expected);
 });
