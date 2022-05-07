@@ -1,4 +1,4 @@
-import lengthOfLongestSubstring from './lengthOfLongestSubstring';
+import lengthOfLongestSubstring from 'lengthOfLongestSubstring/lengthOfLongestSubstring';
 
 test(`
 Input: s = "abcabcbb"

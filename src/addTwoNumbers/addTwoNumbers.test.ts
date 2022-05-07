@@ -1,5 +1,4 @@
-import { isNullishCoalesce } from 'typescript/lib/tsserverlibrary';
-import addTwoNumbers, { makeListNodeFrom } from './addTwoNumbers';
+import addTwoNumbers, { makeListNodeFrom } from 'addTwoNumbers/addTwoNumbers';
 
 describe('addTwoNumbers', () => {
   describe('makeListNodeFrom', () => {
