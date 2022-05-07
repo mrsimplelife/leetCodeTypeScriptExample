@@ -15,8 +15,11 @@
     "emitDecoratorMetadata": true,
     "target": "ES2017",
     "jsx": "react",
-    "module": "ESNext",
+    // "module": "ESNext",
     "moduleResolution": "node",
     "baseUrl": "src"
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
   }
 }
