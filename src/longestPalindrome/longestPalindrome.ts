@@ -4,6 +4,7 @@ function longestPalindrome(s: string): string {
     let curr = '';
     for (let j = i; j < s.length; j++) {
       curr += s[j];
+      console.log(curr);
       if (s[i] === s[j] && res.length < curr.length && isPalindromic(curr)) {
         res = curr;
       }
