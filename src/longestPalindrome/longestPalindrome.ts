@@ -1,22 +1,21 @@
 function longestPalindrome(s: string): string {
-  let res = '';
-  for (let i = 0; i < s.length; i++) {
-    let curr = '';
-    for (let j = i; j < s.length; j++) {
-      curr += s[j];
-      console.log(curr);
-      if (s[i] === s[j] && res.length < curr.length && isPalindromic(curr)) {
-        res = curr;
+  let maxString = '';
+  const check = (left: number, right: number) => {
+    while (s[left] && s[right] && s[left] === s[right]) {
+      const start = left;
+      const end = right + 1;
+      if (maxString.length < end - start) {
+        maxString = s.substring(start, end);
       }
+      left--;
+      right++;
     }
+  };
+  for (let i = 0; i < s.length; i++) {
+    check(i, i);
+    check(i, i + 1);
   }
-  return res;
+  return maxString;
 }
 
-export const isPalindromic = (s: string) => {
-  return s === s.split('').reverse().join('');
-};
-
 export default longestPalindrome;
-
-// c b b d
