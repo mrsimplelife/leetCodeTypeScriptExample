@@ -28,20 +28,7 @@ function addTwoNumbers(
   return head;
 }
 
-export function makeListNodeFrom(arr: number[]): ListNode {
-  const head = new ListNode();
-  let curr = head;
-  arr.forEach((num, index) => {
-    curr.val = num;
-    if (index !== arr.length - 1) {
-      curr.next = new ListNode();
-      curr = curr.next;
-    }
-  });
-  return head;
-}
-
-class ListNode {
+export class ListNode {
   val: number;
   next: ListNode | null;
   constructor(val?: number, next?: ListNode | null) {

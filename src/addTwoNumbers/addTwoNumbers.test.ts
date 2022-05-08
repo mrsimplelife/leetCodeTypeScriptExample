@@ -1,4 +1,17 @@
-import addTwoNumbers, { makeListNodeFrom } from 'addTwoNumbers/addTwoNumbers';
+import addTwoNumbers, { ListNode } from 'addTwoNumbers/addTwoNumbers';
+
+function makeListNodeFrom(arr: number[]): ListNode {
+  const head = new ListNode();
+  let curr = head;
+  arr.forEach((num, index) => {
+    curr.val = num;
+    if (index !== arr.length - 1) {
+      curr.next = new ListNode();
+      curr = curr.next;
+    }
+  });
+  return head;
+}
 
 describe('addTwoNumbers', () => {
   describe('makeListNodeFrom', () => {
