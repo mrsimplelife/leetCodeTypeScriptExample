@@ -1,20 +1,26 @@
 function lengthOfLongestSubstring(s: string): number {
+  let start = 0;
+
   const memo: Record<string, number> = {};
-  let res = 0;
-  let left = 0;
 
-  for (let right = 0; right < s.length; right++) {
-    const key = s[right];
-
-    if (memo[key] !== undefined) {
-      left = Math.max(memo[key], left);
+  return s.split("").reduce((prev, curr, index) => {
+    if (memo[curr] !== undefined) {
+      start = Math.max(memo[curr], start);
     }
 
-    memo[key] = right + 1;
-    res = Math.max(res, right - left + 1);
-  }
-
-  return res;
+    memo[curr] = index + 1;
+    return Math.max(prev, index - start + 1);
+  }, 0);
 }
 
 export default lengthOfLongestSubstring;
+// abcabcbb;
+// 12345678;
+
+// left: 0;
+// index: 1;
+// memo: {
+//   a: 1;
+//   b: 2;
+// }
+// prev: 1;

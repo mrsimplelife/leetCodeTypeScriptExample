@@ -4,7 +4,6 @@ function addTwoNumbers(
 ): ListNode | null {
   const head = new ListNode();
   let curr = head;
-
   let ten = 0;
   while (l1 || l2) {
     let val = (l1?.val || 0) + (l2?.val || 0) + ten;
