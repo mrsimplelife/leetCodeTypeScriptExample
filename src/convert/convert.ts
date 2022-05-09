@@ -1,27 +1,24 @@
 function convert(s: string, numRows: number): string {
   if (numRows === 1) return s;
-  const arr: Array<Array<string>> = Array(numRows)
-    .fill([])
-    .map(() => []);
-  let arrIndex = 0;
+
+  let key = 0;
   let shouldMinus = true;
-  for (let i = 0; i < s.length; i++) {
-    arr[arrIndex].push(s[i]);
-    if (i % (numRows - 1) === 0) {
+  const memo = s.split("").reduce((prev, curr, index) => {
+    if (!prev[key]) prev[key] = curr;
+    else prev[key] += curr;
+    if (index % (numRows - 1) === 0) {
       shouldMinus = !shouldMinus;
     }
     if (shouldMinus) {
-      arrIndex--;
+      key--;
     } else {
-      arrIndex++;
+      key++;
     }
-  }
-
-  return arr
-    .reduce((previous, current) => {
-      return previous.concat(current);
-    }, [])
-    .join("");
+    return prev;
+  }, {} as Record<number, string>);
+  return Object.values(memo).reduce((prev, curr) => {
+    return prev + curr;
+  });
 }
 export default convert;
 
